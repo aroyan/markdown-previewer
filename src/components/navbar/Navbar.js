@@ -19,7 +19,7 @@ export default function Navbar() {
         <a href="#about">About Us</a>
         <a href="#carrers">Carrers</a>
         <a href="#community">Community</a>
-        <a href="javascript:void(0);" className="icon" onClick="myFunction()">
+        <a href="#javascript" className="icon" onClick="myFunction()">
           <img src={Hamburger} alt="Hamburger menu" />
           <i className="fa fa-bars"></i>
         </a>
