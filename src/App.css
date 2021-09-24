@@ -1,16 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam:wght@400;500;700;800&display=swap');
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  font-family: 'Be Vietnam', sans-serif;
 }
 
 .App-header {
@@ -21,18 +13,16 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: cyan;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  color: aquamarine;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav {
+  width: 100vw;
+  background-color: white;
+  position: fixed;
+  top: 0;
 }
