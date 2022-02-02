@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './components/navbar/Navbar';
-import Hero from './components/Hero';
+// import Hero from './components/Hero';
+import Counter from './components/Counter';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
         <Navbar />
       </div>
       <header className="App-header">
-        <Hero />
+        {/* <Hero /> */}
+        <Counter />
       </header>
     </div>
   );
