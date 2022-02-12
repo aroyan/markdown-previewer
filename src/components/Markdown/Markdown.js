@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { marked } from 'marked';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -9,62 +9,43 @@ marked.setOptions({
   breaks: true,
 });
 
-class Editor extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      input: defaultMarkdown,
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({
-      input: e.target.value,
-    });
-  }
-
-  render() {
-    const result = marked.parse(this.state.input);
-    return (
-      <div>
-        <Row>
-          <Col>
-            <h1 style={{ color: 'mediumseagreen' }}>
-              React Markdown Previewer
-            </h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col xl>
-            <section className="editorSection">
-              <h2 style={{ color: 'midnightblue' }}>Editor</h2>
-
-              <Form.Control
-                as="textarea"
-                id="editor"
-                placeholder="Enter your markdown here"
-                onChange={this.handleChange}
-                style={{ height: '80vh', resize: 'none' }}
-                value={this.state.input}
+function Editor() {
+  const [input, setInput] = useState(defaultMarkdown);
+  return (
+    <div>
+      <Row>
+        <Col>
+          <h1 style={{ color: 'mediumseagreen' }}>React Markdown Previewer</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col xl>
+          <section className="editorSection">
+            <h2 style={{ color: 'midnightblue' }}>Editor</h2>
+            <Form.Control
+              as="textarea"
+              id="editor"
+              placeholder="Enter your markdown here"
+              onChange={(e) => setInput(e.target.value)}
+              style={{ height: '80vh', resize: 'none' }}
+              value={input}
+            />
+          </section>
+        </Col>
+        <Col xl>
+          <section className="previewSection">
+            <div>
+              <h2 style={{ color: 'maroon' }}>Preview</h2>
+              <div
+                dangerouslySetInnerHTML={{ __html: marked.parse(input) }}
+                id="preview"
               />
-            </section>
-          </Col>
-          <Col xl>
-            <section className="previewSection">
-              <div>
-                <h2 style={{ color: 'maroon' }}>Preview</h2>
-                <div
-                  dangerouslySetInnerHTML={{ __html: result }}
-                  id="preview"
-                />
-              </div>
-            </section>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
+            </div>
+          </section>
+        </Col>
+      </Row>
+    </div>
+  );
 }
 
 const defaultMarkdown = `# Welcome to my React Markdown Previewer!
@@ -112,14 +93,12 @@ And here. | Okay. | I think we get it.
 ![Some Random Images](https://picsum.photos/300/300)
 `;
 
-export default class Markdown extends Component {
-  render() {
-    return (
-      <Container>
-        <Editor />
-      </Container>
-    );
-  }
+export default function Markdown() {
+  return (
+    <Container>
+      <Editor />
+    </Container>
+  );
 }
 
 //* Alternative I guess
